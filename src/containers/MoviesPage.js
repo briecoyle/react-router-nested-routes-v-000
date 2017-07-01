@@ -7,10 +7,13 @@ import MoviesShow from './MoviesShow'
 const MoviesPage = ({ movies }) =>
   <div>
     <MoviesList movies={movies} />
-    <Route path={`${match.url}/:movieId`} component={MoviesShow} />
-    <Rout exact path={match.url} render={() => (
-      <h3>Please select a Movie from the list.</h3>
-    )} />
+    <Switch>
+      <Route path={`${match.url}/new`} component={MoviesNew} />
+      <Route path={`${match.url}/:movieId`} component={MoviesShow} />
+      <Route exact path={match.url} render={() => (
+        <h3>Please select a Movie from the list.</h3>
+      )} />
+    </Switch>
   </div>;
 
 const mapStateToProps = (state) => {
